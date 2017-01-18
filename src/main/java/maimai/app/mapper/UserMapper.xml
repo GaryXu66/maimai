@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="maimai.app.dao.UserDAO">
+	<insert id="add" parameterType="maimai.app.entity.User">
+		insert into t_user(name, pass, phone, email) values(#{loginName}, #{loginPass}, #{phone}, #{email})
+	</insert>
+	
+	<select id="findUserByPass" parameterType="java.util.Map" resultType="maimai.app.entity.User">
+		select * from t_user where name= #{name} AND pass=#{pass}
+	</select>
+</mapper>
