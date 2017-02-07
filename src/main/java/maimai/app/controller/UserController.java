@@ -49,8 +49,9 @@ public class UserController extends BaseController{
 			@RequestParam(value="email", required=true) String email, 
 			@RequestParam(value="userName", required=true) String name, 
 			@RequestParam(value="passA", required=true) String passA, 
-			@RequestParam(value="passB", required=true) String passB,
-			@RequestParam(value="pic") String picPath){
+			@RequestParam(value="passB", required=true) String passB//,
+//			@RequestParam(value="pic") String picPath
+			){
 		if(StringUtils.isNullOrEmpty(passA) || StringUtils.isNullOrEmpty(passB) || !passA.equals(passB)){
 			model.addAttribute("error", "两次的密码不一致");
 			return "front/login/reg";

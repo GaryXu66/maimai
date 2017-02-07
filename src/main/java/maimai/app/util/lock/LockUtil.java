@@ -1,6 +1,5 @@
 package maimai.app.util.lock;
 
-import java.io.InputStream;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
@@ -13,7 +12,7 @@ import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import com.alibaba.druid.pool.DruidDataSource;
 
 /**
- * 新增了分布式锁功能
+ * 鏂板浜嗗垎甯冨紡閿佸姛鑳�
  * @author Administrator
  *
  */
@@ -36,7 +35,7 @@ public class LockUtil {
    }
 	
 	/*
-	 * 默认持续1分钟，如果该锁超过1分钟还未释放，系统将该锁从列表中删除
+	 * 榛樿鎸佺画1鍒嗛挓锛屽鏋滆閿佽秴杩�1鍒嗛挓杩樻湭閲婃斁锛岀郴缁熷皢璇ラ攣浠庡垪琛ㄤ腑鍒犻櫎
 	 */
 	private final static long defaultTime = 60L;
 
@@ -57,9 +56,9 @@ public class LockUtil {
 	}
 
 	/**
-	 * 获取锁方法
-	 * 调用该方法后，但业务执行完成，需要调用解锁方法解锁
-	 * @param key 标识锁的唯一字段
+	 * 鑾峰彇閿佹柟娉�
+	 * 璋冪敤璇ユ柟娉曞悗锛屼絾涓氬姟鎵ц瀹屾垚锛岄渶瑕佽皟鐢ㄨВ閿佹柟娉曡В閿�
+	 * @param key 鏍囪瘑閿佺殑鍞竴瀛楁
 	 */
 	public void lock(String key){
 //		overdueAll();
@@ -71,7 +70,7 @@ public class LockUtil {
 	/**
 	 * 
 	 * @param key
-	 * @param waitTime 如果已经被lock，尝试等待waitTime秒，看是否可以获得锁，如果waitTime秒后仍然无法获得锁则返回false
+	 * @param waitTime 濡傛灉宸茬粡琚玪ock锛屽皾璇曠瓑寰厀aitTime绉掞紝鐪嬫槸鍚﹀彲浠ヨ幏寰楅攣锛屽鏋渨aitTime绉掑悗浠嶇劧鏃犳硶鑾峰緱閿佸垯杩斿洖false
 	 * @return
 	 */
 	public boolean tryLock(String key,long waitTime){
@@ -107,7 +106,7 @@ public class LockUtil {
 	}
 	
 	/**
-	 * 过期失效的锁清除，并释放锁
+	 * 杩囨湡澶辨晥鐨勯攣娓呴櫎锛屽苟閲婃斁閿�
 	 */
 	private static void overdueAll() {
 		if (lockManage != null && lockManage.size() > 0){
@@ -130,8 +129,8 @@ public class LockUtil {
 	
 	
 	/**
-	 * 解锁方法
-	 * @param key  标识锁的唯一字段
+	 * 瑙ｉ攣鏂规硶
+	 * @param key  鏍囪瘑閿佺殑鍞竴瀛楁
 	 */
 	public void unlock(String key){
 		updateLockStatusForUnLock(key);
@@ -154,33 +153,33 @@ public class LockUtil {
 	
 	public static void main(String[] args) {
 		try {
-			//获取锁
+			//鑾峰彇閿�
 			LockUtil.getInstance().lock("abc");
 			/*
-			 * 业务代码片段
+			 * 涓氬姟浠ｇ爜鐗囨
 			 */
 		} catch (Exception e) {
 		}finally{
-			//最终释放锁
+			//鏈�缁堥噴鏀鹃攣
 			LockUtil.getInstance().unlock("abc");
 		}
 		
-//		//或者
+//		//鎴栬��
 //		try {
-//			//判断当前锁状态，如果可用则返回true，如果不可用等待5S，再判断锁状态，如果还是不可用则返回false
+//			//鍒ゆ柇褰撳墠閿佺姸鎬侊紝濡傛灉鍙敤鍒欒繑鍥瀟rue锛屽鏋滀笉鍙敤绛夊緟5S锛屽啀鍒ゆ柇閿佺姸鎬侊紝濡傛灉杩樻槸涓嶅彲鐢ㄥ垯杩斿洖false
 //			if(LockUtil.getInstance().tryLock("abc", 5)){
 //				/*
-//				 * 业务代码片段
+//				 * 涓氬姟浠ｇ爜鐗囨
 //				 */
 //			}
 //		} catch (Exception e) {
 //		}finally{
-//			//最终释放锁
+//			//鏈�缁堥噴鏀鹃攣
 //			LockUtil.getInstance().unlock("abc");
 //		}
 	}
 	
-	/** --------------------以下代码是使用数据库约束方式控制锁 --------------------**/
+	/** --------------------浠ヤ笅浠ｇ爜鏄娇鐢ㄦ暟鎹簱绾︽潫鏂瑰紡鎺у埗閿� --------------------**/
 	
 	
 	private LockDao lockDao;
@@ -277,7 +276,7 @@ public class LockUtil {
 				String username = "root";
 				String password = "";
 				String dataname = "maimai";
-				//这里为方便和主程序区分，将锁缓存数据操作方式直接使用JDBC方式操作，可访问其他库，这样和主程序的事务没有冲突
+				//杩欓噷涓烘柟渚垮拰涓荤▼搴忓尯鍒嗭紝灏嗛攣缂撳瓨鏁版嵁鎿嶄綔鏂瑰紡鐩存帴浣跨敤JDBC鏂瑰紡鎿嶄綔锛屽彲璁块棶鍏朵粬搴擄紝杩欐牱鍜屼富绋嬪簭鐨勪簨鍔℃病鏈夊啿绐�
 //				BasicDataSource dataSource = new BasicDataSource();
 				DruidDataSource dataSource = new DruidDataSource();
 				dataSource.setPassword(password);
@@ -316,7 +315,7 @@ public class LockUtil {
 	}
 	
 	/**
-	 * 创建锁表
+	 * 鍒涘缓閿佽〃
 	 DROP TABLE IF EXISTS `t_lock`;
 	 CREATE TABLE `t_lock` (
 	   `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,

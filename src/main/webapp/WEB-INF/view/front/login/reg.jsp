@@ -42,14 +42,14 @@
 						<i class="ace-icon fa fa-retweet"></i>
 					</span>
 				</label>
-				<br />
+				<!-- <br />
 				<img alt="图片预览" id="img" width="200px;" height="120px;"/>
 				<br>
 				<label class="block clearfix">
 					<span class="block input-icon input-icon-right">
 						<input type="file" name="pic" id="userPic" />
 					</span>
-				</label>
+				</label> -->
 				<br />
 				<label class="block">
 					<input type="checkbox" class="ace" />
@@ -103,9 +103,9 @@
 	}
 
 	$(function() {
-		$("#userPic").change(function(result) {
+		/* $("#userPic").change(function(result) {
 			uploadPic("userPic");
-		});
+		}); */
 	});
 	</script>
 	</div>
