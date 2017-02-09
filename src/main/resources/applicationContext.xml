@@ -74,7 +74,7 @@
 		<!-- 自动扫描entity目录 -->
 		<property name="typeAliasesPackage" value="maimai.app.entity" />
 		<!-- mybatis配置文件指定 -->
-		<!-- <property  name="configLocation"  value="classpath:mybatis.xml"/>    -->
+		<property  name="configLocation"  value="classpath:mybatis.xml"/>
 		<!-- 显式指定Mapper.xml文件位置 -->
 		<property name="mapperLocations" value="classpath:maimai/app/mapper/*Mapper.xml" />
 	</bean>
