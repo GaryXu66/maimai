@@ -1,8 +1,10 @@
 package maimai.app.base;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class BaseEntity {
+public class BaseEntity implements Serializable{
+	private static final long serialVersionUID = 3546652661963711610L;
 	public long id;
 	public Date createTime;
 	public Date updateTie;
