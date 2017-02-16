@@ -8,6 +8,6 @@
 	</insert>
 	
 	<select id="findUserByPass" parameterType="java.util.Map" resultType="maimai.app.entity.User">
-		select * from t_user where name= #{name} AND pass=#{pass}
+		select * from t_user where name= #{name} AND pass=#{pass} order by id desc limit 1
 	</select>
 </mapper>

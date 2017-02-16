@@ -1,4 +1,4 @@
-package maimai.app.controller;
+package maimai.app.controller.front.account;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -24,10 +24,10 @@ public class UserController extends BaseController{
 	@RequestMapping(value="login")
 	public String login(Model model, HttpSession session , @RequestParam String name, @RequestParam String pass){
 		
-		boolean loginSeccess = userService.loginValid(name, pass);
-		if(loginSeccess){
-			session.setAttribute("name", name);
-			
+		User user = userService.loginAndGetUser(name, pass);
+		if(null != user){
+			session.setAttribute("user", user);
+			model.addAttribute("user", user);
 			return "front/login/login_success";
 		}else{
 			return "front/login/login_error";

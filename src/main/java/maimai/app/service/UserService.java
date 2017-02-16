@@ -2,7 +2,6 @@ package maimai.app.service;
 
 import java.nio.charset.Charset;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -31,16 +30,11 @@ public class UserService extends BaseService{
 		userDAO.add(user);
 	}
 
-	public boolean loginValid(String name, String pass) {
+	public User loginAndGetUser(String name, String pass) {
 		String encryptPass = MD5Util.encrypt(pass, encryptKey, Charset.forName(SysConstant.ENCODE_UTF8));
 		Map<String,String> params = new HashMap<String, String>();
 		params.put("name", name);
 		params.put("pass", encryptPass);
-		List<User> result = userDAO.findUserByPass(params);
-		if(null != result && result.size() > 0){
-			return true;
-		}else{
-			return false;
-		}
+		return userDAO.findUserByPass(params);
 	}
 }

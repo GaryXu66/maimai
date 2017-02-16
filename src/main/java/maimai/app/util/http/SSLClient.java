@@ -1,4 +1,4 @@
-package com.shove190.escrow.plugins.httpClient;
+package maimai.app.util.http;
 
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;

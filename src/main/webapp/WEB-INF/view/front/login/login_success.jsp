@@ -27,7 +27,12 @@
 					<div class="position-relative">
 					<table>
 						<tr>
-							<td>姓名:${name}</td>
+							<td>姓名:${user.loginName}</td>
+							<td>姓名:${user.userName}</td>
+							<td>姓名:${user.age}</td>
+							<td>姓名:${user.phone}</td>
+							<td>姓名:${user.email}</td>
+							<%-- <td>姓名:${user.IdNum}</td> --%>
 						</tr>
 					</table>
 					</div>

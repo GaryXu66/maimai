@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import com.alibaba.fastjson.JSON;
 
 import maimai.app.base.ServiceException;
+import maimai.app.util.HttpUtils;
 
 /**
  * 
@@ -23,16 +24,17 @@ public class GlobalControllerExceptionHandler {
 	//@ExceptionHandler//处理所有异常
  	@ExceptionHandler(ServiceException.class)
     public void exceptionHandler(ServiceException e, HttpServletRequest req, HttpServletResponse response) {
+ 		e.printStackTrace();
  		response.setCharacterEncoding("utf-8");
  		if(HttpUtils.isAjax(req)){
  			try {
-				response.getWriter().write(JSON.toJSONString(new ActionResult<Object>(e)));
+				response.getWriter().write("出现异常，如下："+JSON.toJSONString(e));
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
  		}else{
  			try {
-				response.sendRedirect("/error500");
+				response.sendRedirect("/base/error");
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
