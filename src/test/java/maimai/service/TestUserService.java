@@ -4,20 +4,23 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 
+import com.alibaba.fastjson.JSON;
+
 import maimai.app.entity.User;
-import maimai.app.service.UserService;
+import maimai.app.service.IUserService;
 import maimai.base.BaseTest;
 
 public class TestUserService extends BaseTest {
 	@Resource
-	private UserService userService;
+	private IUserService userService;
 	
 	@Test
 	public void testAddUser(){
 		User user = new User();
-		user.setLoginName("test");
-		user.setLoginPass("123");
+		user.setName("test");
+		user.setPass("123");
 		user.setPhone("2323545");
-		userService.addUser(user);
+		user = (User) userService.getEntityById(33, User.class);
+		System.out.println(JSON.toJSON(user));
 	}
 }

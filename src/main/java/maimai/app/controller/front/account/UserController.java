@@ -12,14 +12,14 @@ import com.mysql.jdbc.StringUtils;
 
 import maimai.app.base.BaseController;
 import maimai.app.entity.User;
-import maimai.app.service.UserService;
+import maimai.app.service.IUserService;
 
 @Controller
 @RequestMapping("/user")
 public class UserController extends BaseController{
 	
 	@Resource
-	UserService userService;
+	IUserService userService;
 	
 	@RequestMapping(value="login")
 	public String login(Model model, HttpSession session , @RequestParam String name, @RequestParam String pass){
@@ -59,8 +59,8 @@ public class UserController extends BaseController{
 		
 		User user = new User();
 		user.setEmail(email);
-		user.setLoginName(name);
-		user.setLoginPass(passA);
+		user.setName(name);
+		user.setPass(passA);
 		userService.addUser(user);
 		return "front/login/login";
 	}

@@ -3,19 +3,22 @@ package maimai.app.entity;
 import maimai.app.base.BaseEntity;
 
 public class User extends BaseEntity{
-	private String loginName;
-	private String loginPass;
-	private String userName;
+	private String name;
+	private String pass;
 	private int age;
 	private String phone;
 	private String email;
-	private String IdNum;
-	
-	public String getUserName() {
-		return userName;
+	public String getName() {
+		return name;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
 	public int getAge() {
 		return age;
@@ -35,25 +38,4 @@ public class User extends BaseEntity{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getLoginName() {
-		return loginName;
-	}
-	public void setLoginName(String loginName) {
-		this.loginName = loginName;
-	}
-	public String getLoginPass() {
-		return loginPass;
-	}
-	public void setLoginPass(String loginPass) {
-		this.loginPass = loginPass;
-	}
-	public String getIdNum() {
-		return IdNum;
-	}
-	public void setIdNum(String idNum) {
-		IdNum = idNum;
-	}
-	
-	
-	
 }

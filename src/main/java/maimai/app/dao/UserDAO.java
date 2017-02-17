@@ -4,7 +4,6 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
-import maimai.app.base.BaseDAO;
 import maimai.app.entity.User;
 
 @Component
