@@ -6,5 +6,7 @@ package maimai.app.constant;
  */
 public class SysConstant {
 	public static final String ENCODE_UTF8 = "UTF-8";
+	
+	public static final String CAS_KEY_HOME_URL = "cas.home.url";
 
 }
