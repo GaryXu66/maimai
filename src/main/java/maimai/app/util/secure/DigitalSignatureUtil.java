@@ -18,8 +18,6 @@ import maimai.app.util.secure.enums.EnumSignatureAlgorithm;
 
 /**
  * 数字证书工具类
- * @author ZGL
- *
  */
 public class DigitalSignatureUtil {
 	

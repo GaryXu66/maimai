@@ -18,9 +18,6 @@ import maimai.app.util.secure.enums.EnumKeyAlgorithm;
 
 /**
  * 加解密工具类
- * 
- * @author ZGL
- * 
  */
 public class CipherUtil {
 	/**
